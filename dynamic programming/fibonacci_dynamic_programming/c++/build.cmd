@@ -1,0 +1,1 @@
+g++ -g *.cpp -O0 -o fib_test
