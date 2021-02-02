@@ -1,7 +1,7 @@
 #include <iostream>
 #include <map>
 
-bool can_sum_rec(int targetNumber, int numbers[], size_t size, std::map<int, bool> *memo )
+bool how_sum_rec(int targetNumber, int numbers[], size_t size, std::map<int, bool> *memo )
 {
     try
     {
@@ -26,7 +26,7 @@ bool can_sum_rec(int targetNumber, int numbers[], size_t size, std::map<int, boo
             }
             catch(const std::exception& e)
             {
-                bool k = can_sum_rec(reminder, numbers, size, memo);
+                bool k = how_sum_rec(reminder, numbers, size, memo);
                 (*memo)[reminder] = k;
                 if (k)
                     return true;
@@ -42,10 +42,10 @@ bool can_sum_rec(int targetNumber, int numbers[], size_t size, std::map<int, boo
 }
 
 
-bool canSum(int targetNumber, int numbers[], size_t size)
+bool howSum(int targetNumber, int numbers[], size_t size)
 {
     std::map<int, bool> memo;
-    return can_sum_rec(targetNumber, numbers, size, &memo);
+    return how_sum_rec(targetNumber, numbers, size, &memo);
 }
 
 
@@ -57,12 +57,11 @@ int main()
     int c[] = {2, 4};
     int d[] = {2, 3, 5};
     int e[] = {7, 14};
-    std::map<int, bool> memo;
-    std::cout << canSum(7, a, 2) << std::endl; // true
-    std::cout << canSum(7, b, 4) << std::endl; // true
-    std::cout << canSum(7, c, 2) << std::endl; // false
-    std::cout << canSum(8, d, 3) << std::endl; // true
-    std::cout << canSum(300, e, 2) << std::endl; // false
+    std::cout << howSum(7, a, 2) << std::endl; // true
+    std::cout << howSum(7, b, 4) << std::endl; // true
+    std::cout << howSum(7, c, 2) << std::endl; // false
+    std::cout << howSum(8, d, 3) << std::endl; // true
+    std::cout << howSum(300, e, 2) << std::endl; // false
 
     return 0;
 }
